@@ -14,6 +14,7 @@ import QuestionBlock                  from './question_block/question_block.jsx'
 import QuestionInterface              from './question_interface/question_interface.jsx';
 import ValidationMessages             from './validation_messages.jsx';
 import CommunicationHandler           from "../../utils/communication_handler";
+import Instructions                   from "./instructions.jsx";
 
 export default class Edit extends BaseComponent{
 
@@ -92,6 +93,9 @@ export default class Edit extends BaseComponent{
             {windowWidth < 1000 ? 'Study Plan' : ''}
 
           </label>
+        </div>
+        <div style={{paddingLeft: '40px'}}>
+        <Instructions settings={this.state.settings}/>
         </div>
         <ul className="eqContent" style={{listStyleType: 'none', padding:'40px'}}>
           {this.displayQuestions()}
