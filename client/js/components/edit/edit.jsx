@@ -94,7 +94,7 @@ export default class Edit extends BaseComponent{
 
           </label>
         </div>
-        <div style={{paddingLeft: '40px'}}>
+        <div style={{paddingLeft: '40px', paddingRight: '40px'}}>
         <Instructions settings={this.state.settings}/>
         </div>
         <ul className="eqContent" style={{listStyleType: 'none', padding:'40px'}}>
