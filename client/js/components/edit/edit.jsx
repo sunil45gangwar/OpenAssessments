@@ -94,10 +94,10 @@ export default class Edit extends BaseComponent{
 
           </label>
         </div>
-        <div style={{paddingLeft: '40px', paddingRight: '40px'}}>
+        <div style={{paddingLeft: '25px', paddingRight: '25px'}}>
         <Instructions settings={this.state.settings}/>
         </div>
-        <ul className="eqContent" style={{listStyleType: 'none', padding:'40px'}}>
+        <ul className="eqContent" style={{listStyleType: 'none', paddingTop: '5px', paddingRight:'40px', paddingBottom:'40px', paddingLeft: '40px'}}>
           {this.displayQuestions()}
         </ul>
         <div className="eqNewQuestion" style={_.merge({}, style.eqNewQuestion, this.btnAreaStyle())} >
