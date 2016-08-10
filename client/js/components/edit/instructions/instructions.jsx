@@ -2,9 +2,10 @@
 
 import React                          from 'react';
 import _                              from 'lodash';
-import BaseComponent                  from '../base_component.jsx';
-import Style                          from './css/style';
-import Expandable                     from '../admin/expandable';
+import BaseComponent                  from '../../base_component.jsx';
+import Expandable                     from '../../admin/expandable';
+import Style                         from '../css/style.js';
+
 
 export default class Instructions extends BaseComponent{
 
@@ -16,10 +17,11 @@ export default class Instructions extends BaseComponent{
   }//constructor
 
 render() {
+    let style   = Style.styles();
     console.log("rendering instructions", this.props.settings.assessmentKind);
-    if(true){
-      return <div>
-            <p>This quiz is designed to assess students on the following learning outcomes:
+    if(false && this.props.settings.assessmentKind == "summative"){
+      return <div style={{border: "1px solid rgba(0,0,0,0.2)", borderRadius: "5px"}}>
+            <p style={{marginLeft: "15px"}}>This quiz is designed to assess students on the following learning outcomes:
 [list learning outcomes]</p>
             <ul>
                 <li>When a student takes a quiz, they receive 2 questions for each outcome.</li>
@@ -33,7 +35,7 @@ render() {
     else if(false && this.props.settings.assessmentKind == "formative"){
       return <p>formative</p>
     }
-    else if (true &&this.props.settings.assessmentKind == "swyk"){
+    else if (true && this.props.settings.assessmentKind == "swyk"){
         return <p>swyk</p>
     }
     else return <p>hi</p>

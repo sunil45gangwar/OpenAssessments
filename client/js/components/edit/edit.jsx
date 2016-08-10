@@ -14,7 +14,7 @@ import QuestionBlock                  from './question_block/question_block.jsx'
 import QuestionInterface              from './question_interface/question_interface.jsx';
 import ValidationMessages             from './validation_messages.jsx';
 import CommunicationHandler           from "../../utils/communication_handler";
-import Instructions                   from "./instructions.jsx";
+import Instructions                   from "./instructions/instructions.jsx";
 
 export default class Edit extends BaseComponent{
 
