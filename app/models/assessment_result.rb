@@ -45,4 +45,22 @@ class AssessmentResult < ActiveRecord::Base
     self.progress.add_answers!(array)
   end
 
+  def regrade!
+    answers = self.progress.answers.last
+    questions = self.question_ids.map{|id|{"id" => id, }}
+
+    ag = AssessmentGrader.new(questions, answers, self.assessment)
+    ag.grade!
+
+    if self.lti_launch && self.assessment.summative?
+      self.session_status = AssessmentResult::STATUS_PENDING_LTI_OUTCOME
+    else
+      self.session_status = AssessmentResult::STATUS_FINAL
+    end
+
+    self.score = (ag.score * 100).round
+
+    self.save!
+  end
+
 end
