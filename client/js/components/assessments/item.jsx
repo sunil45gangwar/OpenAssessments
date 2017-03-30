@@ -10,7 +10,7 @@ import AssessmentStore    from "../../stores/assessment";
 export default class Item extends BaseComponent{
   constructor(){
     super();
-    this._bind("getConfidenceLevels", "confidenceLevelClicked","submit", "nextButtonClicked", "previousButtonClicked", "getPreviousButton", "getNextButton", "getStyles", "clearShowMessage");
+    this._bind("fakeSubmit", "getConfidenceLevels", "confidenceLevelClicked","submit", "nextButtonClicked", "previousButtonClicked", "getPreviousButton", "getNextButton", "getStyles", "clearShowMessage");
   }
 
   nextButtonClicked(e){
@@ -317,6 +317,13 @@ export default class Item extends BaseComponent{
     }
   }
 
+  // Pull the values, and check whether all have been selected, and stuff.
+  fakeSubmit(e){
+    console.log("option1", document.getElementById("option1").value);
+    console.log("option2", document.getElementById("option2").value);
+    console.log("wat3", document.getElementById("wat3").value);
+  }
+
 
   render() {
     var styles = this.getStyles(this.context.theme);
@@ -359,6 +366,12 @@ export default class Item extends BaseComponent{
       submitButtonDiv = ""
     }
 
+    // Iterate over the substitution options and replace with a select with a known ID.
+    // upon submit iterate over those again and grab all the currently selected values.
+    var updated_material = this.props.question.material.replace('[option1]', '<select id="option1" name="oi"><option value="correct">correct</option><option value="incorrect">incorrect</option></select>');
+    updated_material = updated_material.replace('[option2]', '<select id="option2" name="oi"><option value="correct">correct</option><option value="incorrect">incorrect</option></select>');
+    updated_material = updated_material.replace('[wat3]', '<select id="wat3" name="oi"><option value="correct">correct</option><option value="incorrect">incorrect</option></select>');
+
     return (
       <div className="assessment_container" style={styles.assessmentContainer}>
         <div className="question">
@@ -373,9 +386,9 @@ export default class Item extends BaseComponent{
                 <div className="inner_question">
                   <div className="question_text" style={styles.questionText}>
                     {this.questionDirections(styles)}
-                    <div
+                    <div ref="dangerous_question_text"
                       dangerouslySetInnerHTML={{
-                    __html: this.props.question.material
+                    __html: updated_material
                     }}>
                     </div>
                   </div>
@@ -391,7 +404,9 @@ export default class Item extends BaseComponent{
                   </div>
                   <div className="col-md-7 col-sm-6 col-xs-4">
                     {submitButtonDiv}
+                    <div onClick={this.fakeSubmit}>Fake submit</div>
                   </div>
+
                 </div>
               </div>
             </form>
