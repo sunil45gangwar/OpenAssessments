@@ -32,13 +32,15 @@ export default class MultiDropDown extends BaseComponent {
       padding: theme.questionTextPadding,
     };
 
-    //change role from dialog to group to give them an OPTION to review it rather than force a readback.
-
     //place JSX between the parens!
     return (
       <div>
         <div tabIndex="0" dangerouslySetInnerHTML={{__html: question}} style={questionText} />
-        <div style={{position: 'absolute', left: '-10000px', top: 'auto', height: '1px', width: '1px', overflow: 'hidden'}} tabIndex="0" role="group" aria-label="Review your answer" >
+        <div style={{position: 'absolute', left: '-10000px', top: 'auto', height: '1px', width: '1px', overflow: 'hidden'}}
+             tabIndex="0"
+             role="group"
+             aria-label="Review your answer"
+        >
           <div id="question_result_container" dangerouslySetInnerHTML={{__html: questionResult}} />
         </div>
       </div>
